@@ -1,0 +1,310 @@
+/*CREATE TABLE Admin
+(
+ User_ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+ Password nvarchar(50),
+ Email nvarchar(50)
+);
+
+CREATE TABLE Employee
+(
+E_ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+User_ID int NOT NULL FOREIGN KEY references Admin(user_ID),
+E_Name nvarchar(50),
+Address nvarchar(100), 
+Gender varchar (10) Check (Gender ='MALE'OR Gender ='FEMALE'),
+Phone_no nvarchar(50),
+Day_of_joining varchar(50) 
+);
+
+CREATE TABLE Passenger
+(
+P_ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+E_ID int NOT NULL FOREIGN KEY references Employee(E_ID),
+P_Name nvarchar(150),
+Seat_No int,
+Gender varchar (10) Check (Gender ='MALE'OR Gender ='FEMALE'),
+Phone_no nvarchar(50),
+);
+
+CREATE TABLE Station
+(
+Station_ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+Station_Name nvarchar(150),
+No_of_lines int, 
+No_of_platform int
+);
+
+CREATE TABLE Train
+(
+Train_ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+Station_ID int NOT NULL FOREIGN KEY references Station(Station_ID),
+TRN_Name nvarchar(50),
+);
+
+CREATE TABLE Ticket
+(
+Ticket_No int NOT NULL PRIMARY KEY IDENTITY(1,1),
+Train_ID int NOT NULL FOREIGN KEY references Train(Train_ID),
+Source nvarchar(50), 
+Destination nvarchar(50), 
+Class_ID nvarchar(50) ,
+Fare int,
+);
+*/
+
+--CREATE TABLE Fare(
+--Receipt_ID int not null primary key identity (1,1),
+--Train_ID int NOT NULL FOREIGN KEY references Train(Train_ID),
+--Ticket_No int NOT NULL FOREIGN KEY references Ticket(Ticket_No),
+--Source varchar(30),
+--Destination varchar(30)
+--);
+
+/*Create table Class(
+Class_ID int not null primary key identity (1,1),
+Train_ID int NOT NULL FOREIGN KEY references Train(Train_ID),
+Journey_Date date,
+No_of_seats int,
+);*/
+
+--Create table Time(
+--Ref_No int not null primary key identity (1,1),
+--Train_ID int NOT NULL FOREIGN KEY references Train(Train_ID),
+--Station_ID int NOT NULL FOREIGN KEY references Station(Station_ID),
+--Dept_Time time,
+--Arr_Time time,
+--);
+
+--CREATE TABLE Route (
+--Arr_time time,
+--Dept_time time,
+--Stop_no int ,
+--);
+
+/*Create Table Ticket_Cancellation(
+P_ID int NOT NULL FOREIGN KEY references Passenger(P_ID),
+Seat_no int,
+Ph_No varchar (30),
+Refund_amount int
+);*/
+
+
+/*
+
+-- INSERTION
+INSERT INTO Admin( Password,Email)
+values(2234,'ali@gmail.com'),
+(3456,'Abdullah@gmail.com'),
+(5623,'ashfaq@gmail.com'),
+(1289,'Naseem@gmail.com'),
+(6543,'Rafique@gmail.com'),
+(33442,'t2hsen233@gmail.com'),
+(4571,'Mahnoor23@gmail.com'),
+(3519,'Usman001@gmail.com'),
+(18623,'Abdullah289@gmail.com'),
+(23178, 'Asad632@gmail.com')
+Select * from Admin
+
+INSERT INTO Employee(E_Name,User_ID, Address, Gender,Phone_no, Day_of_joining)
+VALUES('Ahmed khan',1,'MallRoad','Male','244451','12/04/2005'),
+('Faizan',2,'BidenRoad', 'Male','4666787','12/04/2005'),
+('Ayesha Riaz',3,'RaviTown','Female','7788','12/04/2005'),
+('Sazim Bakhat',4,'shekhupur','Male','456777','12/04/2005'),
+('Hassan Ali',5,'QasimRoad','Male','379212','12/04/2005'),
+('Ijaz Malik',6,'AnarkaliRoad', 'Male','77775','12/04/2005'),
+('Sanaullah',7,'DHA','Male','45696','12/04/2005'),
+('Qasim Shah',8,'LaalPul','Male','23452','12/04/2005'),
+('Maliha Nadeem',9,'RaviTown','Female','3367','12/04/2005'),
+('MaysoonShahid',10,'MaskeenPura','Female','54821','12/04/2005')
+Select * from Employee*/
+
+/*INSERT INTO Passenger( E_ID, P_Name, Seat_No, Gender, Phone_no)
+values(1,'Ali Hussan',01,'Male',12343378901),
+(2,'Abdullah Malik',02,'male',34848743221),
+(3,'Faiza Ashfaq',03,'Female',45973474945),
+(4,'Fatima Naseem',010,'Female',23334872381),
+(5,'Sana Rafique',012,'Female',35848743219),
+(6,'Tehsen Qamar',015,'Male',34287853218),
+(7,'Mahnoor Nazakat',016,'Female',48845722124),
+(8,'Usman Rashid',017,'Male',34874585723),
+(9,'Abdullah Mohsin',020,'Male',457454857776),
+(10,'Asad Siddiqui',022,'Male',02233984652)
+Select * from Passenger*/
+
+/*INSERT INTO Station (Station_name, No_of_lines, No_of_platform)
+VALUES('Lahore',6,20),
+('Raiwind',6,20),
+('Sahiwal',6,10),
+('Bhawalpur',6,7),
+('khenawel',6,15),
+('Hyderabad',6,17),
+('Rohri',6,5),
+('Nwabshah',6,12),
+('Landi',6,9),
+('Drigh Road',6,11),
+('Karachi Cantt',6,20)
+Select * from Station*/
+
+/*INSERT INTO Train (Station_ID, TRN_Name)
+values(001,'Akbar Bugti Express'),
+(002,'Allama Iqbal Express'),
+(003,'Awam Express'),
+(004,'Attock Passenger'),
+(005,'Babu Passenger'),
+(006,'Badar Express'),
+(007,'Badin Express'),
+(008,'Bahauddin Zakaria Express')
+Select * from Train*/
+
+
+
+
+/*INSERT INTO Ticket(Train_ID, Source,Destination,Class_ID,Fare)
+values(3,'Lahore','Karachi','1st class', 8000),
+(4,'Lahore','Karachi','buisness class', 11000),
+(5,'Queta','Peshawar','1st class', 10000),
+(6,'Multan','Sailkot', 'economy class', 6000),
+(7,'Lahore','Karachi','buisness class', 6000),
+(8,'Lahore','Karachi','economy class', 5000),
+(4,'Multan','Sailkot','business class', 6000),
+(5,'Queta','Peshawar','1st class', 10000),
+(1,'Queta','Peshawar','business class', 8000),
+(2,'Lahore','Karachi','economy class', 6000)
+Select * from Ticket*/
+
+
+
+/*Insert into Fare(Ticket_No, Train_ID, Source, Destination)
+Values (17, 3, 'Lahore','karachi'),
+       (18, 4, 'Lahore','karachi'),
+	   (19, 5, 'Queta','Peshawar'),
+       (20, 6, 'Multan','Sailkot'),
+       (21, 7, 'Lahore','karachi'),
+       (22, 8, 'Lahore','Sailkot'),
+       (23, 4, 'Queta','Peshawar'),
+       (24, 5, 'Queta','Peshawar'),
+       (25, 1, 'Lahore','Karachi'),
+	   (26, 2, 'Lahore','Karachi')
+Select * from Fare*/
+
+/*INSERT INTO Class(Train_ID, journey_date, No_of_seats)
+VALUES(1,'12-07-2021',20),
+(2,'12-07-2021',30),
+(3,'12-07-2021',50),
+(4,'12-07-2021',120),
+(5,'12-07-2021',130),
+(6,'12-07-2021',150),
+(7,'12-07-2021',220),
+(8,'12-07-2021',230),
+(5,'12-07-2021',130),
+(6,'12-07-2021',150)
+Select * from Class
+*/
+
+/*INSERT INTO Time( Train_ID, Station_ID, Arr_time, Dept_time)
+Values(1, 1,'17:00:00', '17:00:00'),
+(2, 2,'17:40:00','17:45:00'),
+(3, 3,'19:19:00','19:21:00'),
+(4, 5,'20:45:00','21:05:00'),
+(5,4,'21:50:00','21:55:00'),
+(6, 6,'23:20:00','23:24:00'),
+(7, 2,'04:00:00','04:25:00'),
+(8, 5,'07:15:00','07:17:00'),
+(1, 8,'09:10:00','09:15:00'),
+(3, 4,'10:55:00','10:57:00')
+Select * from Time*/
+
+--INSERT INTO Route (Arr_time, Dept_time, Stop_no)
+--Values ('17:40:00','17:45:00', 01),
+--('19:19:00','19:21:00', 02),
+--('20:45:00','21:05:00', 03),
+--('21:50:00','21:55:00', 04),
+--('23:20:00','23:24:00',05),
+--('04:00:00','04:25:00', 06),
+--('07:15:00','07:17:00', 07),
+--('09:10:00','09:15:00', 08),
+--('10:55:00','10:57:00', 09),
+--('11:18:00','11:20:00',10),
+--('11:45:00','11:20:00',11)
+--Select * from Route
+
+/*Insert into Ticket_Cancellation (P_ID, Seat_no, Ph_no, Refund_amount)
+Values(1,11,'334353',1000),
+	(1,13,'389353',2000),
+	(2,16,'377353',4000),
+	(3,14,'344353',4500),
+	(4,15,'3322353',2100),
+	(5,12,'338853',1100),
+	(6,18,'334953',1300),
+	(7,10,'331153',1500),
+	(8,19,'322353',1400),
+	(9,19,'377353',1600),
+	(10,09,'904353',1500)
+Select * from Ticket_Cancellation*/
+
+--Update Admin
+--Set password= 1200
+--Where user_ID= 1
+
+--Update employee
+--Set E_name = 'Mehak Kainat'
+--Where E_ID=5
+
+--Select * from Passenger
+--Order by P_ID Desc
+
+--Select * from station
+--Order by Station_Name Asc
+
+--Select distinct TRN_Name
+--From train
+
+--Select distinct Fare
+--From train
+
+--Select MAX (Fare) as max_fare 
+--From ticket
+
+--Select MIN (Fare) as min_fare 
+--From ticket
+
+----Like operator
+--Select E_name from employee
+--Where Address like 'S%'
+
+--Drop Table Train
+--Delete Table Train
+-- Select * from Admin
+--Select T.Station_ID, T.TRN_Name,C.Class_ID,C.Journey_Date,C.No_of_Seats
+--From Train as T join Class as C 
+--ON T.Train_ID=C.Class_ID
+
+--Select T.Station_ID, T.TRN_Name,C.Class_ID,C.Journey_Date,C.No_of_Seats
+--From Train as T Left outer join Class as C 
+--ON T.Train_ID = C.Class_ID
+
+--Select T.TRN_Name, T.Station_ID,Ti.Destination
+--From Train as T right join Ticket as Ti 
+--ON T.Train_ID=Ti.Train_ID
+
+--Select Class.Train_ID, Train.TRN_Name,class.Class_ID
+--From Class Inner join Train 
+--ON Class.Train_ID=Train.Train_ID;
+
+--Select Class.Train_ID, Train.TRN_Name,class.Class_ID
+--From Class Full join Train 
+--ON Class.Train_ID=Train.Train_ID;
+
+--Select Source,Destination, Class_ID
+--From Ticket
+--Where EXISTS (Select TRN_Name From train 
+--Where EXISTS (select Receipt_ID from Fare where Ticket.Train_ID = Train.Train_ID))
+
+--Select P_Name, Seat_No, Gender, Phone_no
+--From Passenger As P
+--Where EXISTS (Select Email from Admin where P.P_ID= Admin.User_ID);
+
+--Select * from Passenger As P
+--where Exists (Select * from Employee As E Where E.E_ID = P.E_ID)
+
+
